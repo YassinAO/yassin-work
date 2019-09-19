@@ -28,7 +28,3 @@ Route::resource('careers', 'CareerController');
 
 Route::get('/category/{id}', 'PostController@category')->name('category');
 Route::resource('categories', 'CategoryController', ['except' => ['create']]);
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
