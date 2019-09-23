@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index');
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::get('/dashboard/posts', 'DashboardController@post');
@@ -22,9 +20,9 @@ Route::get('/dashboard/careers', 'DashboardController@career');
 
 Auth::routes([ 'register' => false ]);
 
-Route::resource('projects', 'ProjectController');
 Route::resource('posts', 'PostController');
-Route::resource('careers', 'CareerController');
+Route::resource('projects', 'ProjectController', ['except' => ['index']]);
+Route::resource('careers', 'CareerController', ['except' => ['index', 'show']]);
 
 Route::get('/category/{id}', 'PostController@category')->name('category');
 Route::resource('categories', 'CategoryController', ['except' => ['create']]);
