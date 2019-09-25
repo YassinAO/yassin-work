@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-Route::get('/dashboard/posts', 'DashboardController@post');
+Route::get('/dashboard/posts', 'DashboardController@post')->name('posts');
 Route::get('/dashboard/projects', 'DashboardController@project');
 Route::get('/dashboard/careers', 'DashboardController@career');
 

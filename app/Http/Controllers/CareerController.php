@@ -63,7 +63,7 @@ class CareerController extends Controller
         $career->user_id = auth()->user()->id;
         $career->fill($request->all());
         $career->save();
-        return redirect()->route('careers.show', $career->id)->with('success', 'Career has been created!');
+        return redirect()->route('dashboard')->with('success', 'Career has been created!');
     }
 
     /**
@@ -74,8 +74,7 @@ class CareerController extends Controller
      */
     public function show($id)
     {
-        $career = Career::FindOrFail($id);
-        return view('careers.show')->with('career', $career);
+        //
     }
 
     /**
@@ -86,9 +85,8 @@ class CareerController extends Controller
      */
     public function edit($id)
     {
-        $categories = Category::all();
         $career = Career::FindOrFail($id);
-        return view('careers.edit')->with('career', $career)->with('categories', $categories);
+        return view('careers.edit')->with('career', $career);
     }
 
     /**
@@ -102,8 +100,7 @@ class CareerController extends Controller
     {
         $this->validate($request, [
             'title'         => 'required',
-            'description'   => 'required', 
-            'category_id'   => 'required|integer',
+            'description'   => 'required',
             'body'          => 'required',
             'cover_image'   => 'image|nullable|max:1999'
         ]);
@@ -117,13 +114,12 @@ class CareerController extends Controller
         }
 
         $career = Career::find($id);
-        $career->category_id = $request->category_id;
         $career->fill($request->all());
         if($request->hasFile('cover_image')){
             $career->cover_image = $filenameToStore;
         }
         $career->save();
-        return redirect()->route('careers.show', $id)->with('success', 'Career has been updated!');
+        return redirect()->route('dashboard')->with('success', 'Career has been updated!');
     }
 
     /**
