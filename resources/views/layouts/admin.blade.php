@@ -24,6 +24,10 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+    @auth
+        @include('partials.sidenav')
+    @endauth
+
     <div id="app">
         <main>
             @yield('content')

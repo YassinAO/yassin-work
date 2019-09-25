@@ -23,7 +23,7 @@
                 </div>
             @endif
 
-            <div class="cases-block big-case" data-aos="fade-up">
+            <div class="cases-block" data-aos="fade-up">
                 <div class="cases-thumb">
                     <a href="/projects/{{$project->id}}"><figure><img src="/storage/cover_images/projects/{{$project->cover_image}}" alt="" width="100%"></figure></a>
                     <a href="cases" class="view-btn nav-link"><span>View case</span></a>

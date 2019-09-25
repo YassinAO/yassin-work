@@ -6,7 +6,7 @@
                 <span class="name"><span>Yassin Ait Ougard</span></span>
                 <span class="occupation"><span>Web Developer/Designer</span></span>
                 <span class="quote"><span>Let's Develop The Future</span></span>
-                <a href="#cases" class ="case-btn nav-link"><span>View cases</span></a>
+                <a href="#projects" class ="case-btn nav-link"><span>View projects</span></a>
             </h1>
             </div>
         </div>
