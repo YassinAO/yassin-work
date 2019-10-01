@@ -6,7 +6,7 @@
         </div>
     </div>
 
-    <div class="contact-container whitespace" data-aos="fade-right">
+    <div class="contact-container whitespace" data-aos="fade-up">
         <div class="contact-block">
             <a href="https://www.linkedin.com/in/yassin-ait-ougard-00216a178/" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://github.com/Y4SSIN/" target="_blank"><i class="fab fa-github"></i></a>

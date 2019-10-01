@@ -17,6 +17,7 @@
                     <thead>
                         <th>Title</th>
                         <th>Category</th>
+                        <th>Last modified</th>
                         <th>Actions</th>
                     </thead>
                         
@@ -24,6 +25,7 @@
                         <tr>
                             <td>{{$project->title}}</td>
                             <td>Python</td>
+                            <td>{{date('d-m-Y', strtotime($project->updated_at))}}</td>
                             <td>
                                 <a href="/projects/{{$project->id}}" class="btn-custom btn-view"><i class="fas fa-eye"></i></a>
                                 <a href="/projects/{{$project->id}}/edit" class="btn-custom btn-edit"><i class="fas fa-edit"></i></a>

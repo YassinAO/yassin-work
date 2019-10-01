@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="dashboard-bg">
     @auth
         @include('partials.sidenav')
     @endauth

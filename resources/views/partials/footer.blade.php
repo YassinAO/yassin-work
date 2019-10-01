@@ -1,6 +1,6 @@
 <footer id="footer">
     <div class="container">
-        <div class="footer-container whitespace" data-aos="fade-left">
+        <div class="footer-container whitespace" data-aos="fade-down">
             <div class="footer-block">
                 <h4>Personal mission</h4>
                 <ul>

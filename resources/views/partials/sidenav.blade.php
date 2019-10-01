@@ -1,11 +1,14 @@
 <div id="sidenav">
         <div class="sidenav-header">
-            <h3>Yassin.work</h3>
+            <img src="{{URL::asset('/images/logo.png')}}" alt="" width="75%">
         </div>
     <div id="sidenav-container">
         <ul>
             <li class="sidenav-item">
                 <a class="sidenav-link" href="{{ url('/') }}" target="_blank"><i class="fas fa-satellite-dish"></i> Live</a>
+            </li>
+            <li class="sidenav-item">
+                <a class="sidenav-link" href="{{ url('dashboard') }}"><i class="fas fa-home"></i> Main</a>
             </li>
             <li class="sidenav-item">
                 <a class="sidenav-link" href="{{ url('dashboard/projects') }}"><i class="fas fa-pencil-ruler"></i> Projects</a>

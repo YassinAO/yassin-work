@@ -225,7 +225,7 @@ section {
   color: #3C3939;
   font-size: 3em;
   font-weight: 100;
-  border-bottom: 1.5px solid #2C83D1;
+  border-bottom: 2.5px solid #3C3939;
 }
 
 .whitespace {
@@ -260,7 +260,8 @@ section {
 .cases-block .cases-desc span {
   font-size: 1.1em;
   color: #8594AB;
-  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.2s ease-in-out;
   display: block;
   margin: 10px 0px 10px 0px;
 }
@@ -285,16 +286,18 @@ section {
 .cases-thumb:hover + .cases-desc span,
 .cases-thumb:hover .view-btn {
   visibility: visible;
+  opacity: 1;
 }
 
 .view-btn {
-  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.2s ease-in-out;
   position: absolute;
   margin: auto;
   display: inline-block;
   padding: 15px 50px 15px 50px;
   font-size: 1.2em;
-  border: 3px solid #ffff;
+  border: 3px solid white;
   text-transform: uppercase;
   font-weight: 300;
   color: white;
@@ -308,11 +311,11 @@ section {
 
 .cases-block figure img {
   opacity: 1;
-  transition: .3s ease-in-out;
+  transition: .4s ease-in-out;
 }
 
 .cases-block figure:hover img {
-  opacity: 0.5;
+  opacity: 0;
 }
 
 .cases-block figure::before {
@@ -324,7 +327,7 @@ section {
   content: '';
   width: 50%;
   height: 100%;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100%);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 100%);
   transform: skewX(-25deg);
 }
 
@@ -345,12 +348,16 @@ section {
   }
 }
 
-.cases-block:nth-child(odd) figure img {
-  max-height: 450px;
+.cases-block:nth-child(even) figure img {
+  height: 450px;
 }
 
-.cases-block:nth-child(even) figure img {
-  max-height: 450px;
+.cases-block:nth-child(odd) figure img {
+  height: 350px;
+}
+
+.cases-block:nth-child(odd) {
+  margin-top: 50px;
 }
 
 .cases-block figure:hover img {
@@ -730,7 +737,7 @@ footer .mark {
 .timeline ul li h5 {
   margin: 0px;
   padding: 0px;
-  font-weight: 100;
+  font-weight: 300;
   color: #2C83D1;
 }
 
@@ -930,8 +937,13 @@ footer .mark {
 
 /* DASHBOARD START*/
 
+.dashboard-bg {
+  background: linear-gradient(to bottom, #064475 200px, #F2F2F2 0%);
+  height: 100vh;
+}
+
 .dashboard-container {
-  width: 80%;
+  width: 90%;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -945,7 +957,7 @@ footer .mark {
 }
 
 .dashboard-container .dashboard-block h2 {
-  color: #2C83D1;
+  color: white;
   margin: 0px;
   font-weight: 100;
   font-size: 1.7em;
@@ -955,13 +967,15 @@ footer .mark {
 .dashboard-container table {
   border-collapse: collapse;
   width: 100%;
+  table-layout: fixed;
   text-align: left;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  margin-top: 25px;
   margin-bottom: 50px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.16);
 }
 
 .dashboard-container table thead {
-  background-color: #2C83D1;
+  background-color: white;
 }
 
 .dashboard-container table tbody {
@@ -972,15 +986,15 @@ footer .mark {
   border-spacing: 0;
   border-collapse: collapse;
   font-weight: 100;
-  padding: 15px;
-  color: white;
+  padding: 20px;
+  font-weight: 600;
+  color: #064475;
 }
 
 .dashboard-container table td {
-  padding: 15px;
-  border-bottom: 1px solid #ddd;
-  width: 1%;
-  color: #A5A5A5;
+  padding: 20px;
+  border-top: 1px solid #F0F0F0;
+  color: #3C3939;
 }
 
 #sidenav {
@@ -988,26 +1002,22 @@ footer .mark {
   width: 225px;
   position: fixed;
   z-index: 1;
-  background-color: #212121;
+  background-color: white;
+  box-shadow: -2px 0 5px 0 #555;
 }
 
 #sidenav .sidenav-header {
-  background-color: #2C83D1;
+  background-color: #064475;
+  text-align: center;
 }
 
-#sidenav .sidenav-header h3 {
-  color: white;
-  text-align: center;
-  margin: 0px;
-  padding: 20px;
-  font-weight: 100;
-  text-transform: uppercase;
-  font-size: 1em;
-  letter-spacing: 0.1em;
+#sidenav .sidenav-header img {
+  margin: 25px 0px 25px 0px;
 }
 
 #sidenav ul {
   margin: 50px 0px 0px 0px;
+  padding-left: 25px;
   list-style-type: none;
   height: 100vh;
 }
@@ -1017,32 +1027,38 @@ footer .mark {
 }
 
 #sidenav ul li a {
-  color: #ffff;
-  font-size: 1em;
+  color: #3C3939;
+  font-size: 1.1em;
   font-weight: 100;
   transition: color 0.5s;
 }
 
 #sidenav ul li a:hover {
-  color: #2C83D1;
+  color: #064475;
 }
 
 #sidenav ul li i {
   margin-right: 10px;
 }
 
-.form-block {
+.form-container {
+  background-color: white;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.16);
+}
+
+.form-container .form-block {
   margin-bottom: 25px;
 }
 
-.form-block .form-control {
+.form-container .form-block .form-control {
   box-sizing: border-box;
   display: block;
   width: 100%;
   padding: 10px;
   margin-top: 10px;
   color: #8a8282;
-  background: #F9F9F9;
   border: 1px solid #ccc;
 }
 
@@ -1075,12 +1091,13 @@ footer .mark {
 }
 
 .btn-custom {
-  width: 75px;
-  height: 35px;
+  width: 60px;
+  height: 30px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   margin-right: 5px;
+  margin-bottom: 5px;
   color: white;
   border: none;
   text-decoration: none;
@@ -1096,7 +1113,6 @@ footer .mark {
 .btn-create,
 .btn-add {
   background-color: #239C15;
-  margin-bottom: 25px;
 }
 
 .btn-edit {

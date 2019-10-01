@@ -14,6 +14,7 @@
                     <thead>
                         <th>Title</th>
                         <th>Category</th>
+                        <th>Last modified</th>
                         <th>Actions</th>
                     </thead>
                         
@@ -21,6 +22,7 @@
                         <tr>
                             <td>{{$post->title}}</td>
                             <td>Python</td>
+                            <td>{{date('d-m-Y', strtotime($post->updated_at))}}</td>
                             <td>
                                 <a href="/posts/{{$post->id}}" class="btn-custom btn-view"><i class="fas fa-eye"></i></a>
                                 <a href="/posts/{{$post->id}}/edit" class="btn-custom btn-edit"><i class="fas fa-edit"></i></a>
