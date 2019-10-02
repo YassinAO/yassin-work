@@ -13,18 +13,17 @@
                     
                     <thead>
                         <th>Title</th>
-                        <th>Category</th>
-                        <th>Last modified</th>
+                        <th>Start date</th>
+                        <th>End date</th>
                         <th>Actions</th>
                     </thead>
                         
                     @foreach($careers as $career)
                         <tr>
                             <td>{{$career->title}}</td>
-                            <td>Python</td>
-                            <td>{{date('d-m-Y', strtotime($career->updated_at))}}</td>
+                            <td>{{$career->start_date->format('F Y')}}</td>
+                            <td>{{$career->end_date->format('F Y')}}</td>
                             <td>
-                                <a href="/careers/{{$career->id}}" class="btn-custom btn-view"><i class="fas fa-eye"></i></a>
                                 <a href="/careers/{{$career->id}}/edit" class="btn-custom btn-edit"><i class="fas fa-edit"></i></a>
                                 <form method="POST" action="{{ route('careers.destroy', $career->id)}}" style="display: inline-block;"> 
                                     @csrf

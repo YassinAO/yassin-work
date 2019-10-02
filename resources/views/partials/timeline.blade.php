@@ -14,7 +14,7 @@
                         </div>
                     </div>
                     <div class="time">
-                        <h4>January 2019</h4>
+                        <h4>{{$career->start_date->format('F Y')}}</h4>
                     </div>
                 </li>
                 @endforeach
