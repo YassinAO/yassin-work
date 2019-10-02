@@ -19,8 +19,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return view('categories.index')->with('categories', $categories);
+        //
     }
 
     /**
@@ -48,7 +47,7 @@ class CategoryController extends Controller
         $category = new Category;
         $category->fill($request->all());
         $category->save();
-        return redirect()->route('categories.index')->with('success', 'Category has been created!');
+        return redirect()->action('DashboardController@category')->with('success', 'Category has been created');
     }
 
     /**
@@ -93,6 +92,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        $category->delete();
+        return redirect()->action('DashboardController@category')->with('success', 'Category has been deleted');
     }
 }
