@@ -24,8 +24,8 @@
                     @foreach($projects as $project)
                         <tr>
                             <td>{{$project->title}}</td>
-                            <td>Python</td>
-                            <td>{{date('d-m-Y', strtotime($project->updated_at))}}</td>
+                            <td>{{$project->category->title}}</td>
+                            <td>{{$project->updated_at->format('d-m-Y')}}</td>
                             <td>
                                 <a href="/projects/{{$project->id}}" class="btn-custom btn-view"><i class="fas fa-eye"></i></a>
                                 <a href="/projects/{{$project->id}}/edit" class="btn-custom btn-edit"><i class="fas fa-edit"></i></a>
