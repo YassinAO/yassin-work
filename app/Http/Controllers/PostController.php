@@ -77,7 +77,7 @@ class PostController extends Controller
         $post->category_id = $request->category_id;
         $post->fill($request->all());
         $post->save();
-        return redirect()->route('posts.show', $post->id)->with('success', 'Post has been created!');
+        return redirect()->action('DashboardController@post')->with('success', 'Post has been created');
     }
 
     /**
@@ -137,7 +137,7 @@ class PostController extends Controller
             $post->cover_image = $filenameToStore;
         }
         $post->save();
-        return redirect()->route('posts.show', $id)->with('success', 'Post has been updated!');
+        return redirect()->action('DashboardController@post')->with('success', 'Post has been updated');
     }
 
     /**
@@ -158,6 +158,6 @@ class PostController extends Controller
         }
 
         $post->delete();
-        return redirect('dashboard')->with('success', 'Post has been deleted!');
+        return redirect()->action('DashboardController@post')->with('success', 'Post has been deleted');
     }
 }

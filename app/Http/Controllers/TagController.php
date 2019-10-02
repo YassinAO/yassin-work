@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Category;
+use App\Tag;
 
-class CategoryController extends Controller
+class TagController extends Controller
 {
 
     public function __construct(){
         $this->middleware('auth');
     }
-
+    
     /**
      * Display a listing of the resource.
      *
@@ -42,12 +42,13 @@ class CategoryController extends Controller
     {
         $this->validate($request, [
             'title'         => 'required',
+            'color'         => 'required',
         ]); 
 
-        $category = new Category;
-        $category->fill($request->all());
-        $category->save();
-        return redirect()->action('DashboardController@category')->with('success', 'Category has been created');
+        $tag = new Tag;
+        $tag->fill($request->all());
+        $tag->save();
+        return redirect()->action('DashboardController@tag')->with('success', 'Tag has been created');
     }
 
     /**
@@ -92,8 +93,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
-        $category->delete();
-        return redirect()->action('DashboardController@category')->with('success', 'Category has been deleted');
+        $tag = Tag::find($id);
+        $tag->delete();
+        return redirect()->action('DashboardController@tag')->with('success', 'Tag has been deleted');
     }
 }

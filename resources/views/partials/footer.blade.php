@@ -1,6 +1,6 @@
 <footer id="footer">
     <div class="container">
-        <div class="footer-container whitespace" data-aos="fade-left">
+        <div class="footer-container whitespace" data-aos="fade-down">
             <div class="footer-block">
                 <h4>Personal mission</h4>
                 <ul>
@@ -19,7 +19,7 @@
             <div class="footer-block">
                 <h4>Navigation</h4>
                 <ul>
-                    <li><a class="nav-link" href="#cases">Cases</a></li>
+                    <li><a class="nav-link" href="#projects">Projects</a></li>
                     <li><a class="nav-link" href="#services">Services</a></li>
                     <li><a class="nav-link" href="#about">About</a></li>
                     <li><a class="nav-link" href="#contact">Contact</a></li>

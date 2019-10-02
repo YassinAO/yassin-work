@@ -7,6 +7,8 @@ use App\User;
 use App\Post;
 use App\Project;
 use App\Career;
+use App\Category;
+use App\Tag;
 
 class DashboardController extends Controller
 {
@@ -27,10 +29,7 @@ class DashboardController extends Controller
      */
     public function index()
     {   
-        $user_id = auth()->user()->id;
-        $user = User::find($user_id);
-        $posts = Post::orderBy('id', 'desc')->paginate(5);
-        return view('dashboard.index')->with('posts', $user->posts)->with('posts', $posts);
+        return view('dashboard.index');
     }
 
     public function post(){
@@ -52,5 +51,15 @@ class DashboardController extends Controller
         $user = User::find($user_id);
         $careers = Career::orderBy('id', 'desc')->paginate(5);
         return view('dashboard.careers')->with('careers', $user->careers)->with('careers', $careers);
+    }
+
+    public function category(){
+        $categories = Category::orderBy('id', 'desc')->paginate(5);
+        return view('dashboard.categories')->with('categories', $categories);
+    }
+
+    public function tag(){
+        $tags = Tag::orderBy('id', 'desc')->paginate(5);
+        return view('dashboard.tags')->with('tags', $tags);
     }
 }

@@ -14,5 +14,9 @@ class Post extends Model
         return $this->belongsTo('App\Category');
     }
 
-    protected $fillable = ['title', 'description', 'body'];
+    public function tag(){
+        return $this->hasMany('App\Tag');
+    }
+
+    protected $fillable = ['title', 'description', 'category_id', 'body'];
 }

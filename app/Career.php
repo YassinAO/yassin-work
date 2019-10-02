@@ -10,5 +10,6 @@ class Career extends Model
         return $this->belongsTo('App\User');
     }
 
-    protected $fillable = ['title', 'description', 'body'];
+    protected $fillable = ['title', 'description', 'start_date', 'end_date', 'body', 'cover_image'];
+    protected $dates = ['start_date', 'end_date'];
 }

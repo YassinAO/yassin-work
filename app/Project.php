@@ -10,5 +10,9 @@ class Project extends Model
         return $this->belongsTo('App\User');
     }
 
-    protected $fillable = ['title', 'description', 'body'];
+    public function category(){
+        return $this->belongsTo('App\Category');
+    }
+
+    protected $fillable = ['title', 'description', 'category_id', 'body'];
 }

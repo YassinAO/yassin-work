@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Project;
+use App\Category;
 
 class ProjectController extends Controller
 {
@@ -20,8 +21,17 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::orderBy('title', 'asc')->get();
+        $projects = Project::orderBy('id', 'desc')->paginate(5);
+        return view('projects.index')->with('projects', $projects)->with('categories', $categories);
     }
+
+    // public function category($id)   
+    // {
+    //     $categories = Category::orderBy('title', 'asc')->get();
+    //     $projects = Project::orderBy('id', 'desc')->where('category_id', $id)->paginate(5);
+    //     return view('projects.index')->with('projects', $projects)->with('categories', $categories);
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -30,7 +40,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+        $categories = Category::all();
+        return view('projects.create')->with('categories', $categories);
     }
 
     /**
@@ -44,6 +55,7 @@ class ProjectController extends Controller
         $this->validate($request, [
             'title'         => 'required',
             'description'   => 'required',
+            'category_id'   => 'required',
             'body'          => 'required',
             'cover_image'   => 'image|nullable|max:1999'
         ]);
@@ -62,9 +74,10 @@ class ProjectController extends Controller
         $project = new Project();
         $project->cover_image = $filenameToStore;
         $project->user_id = auth()->user()->id;
+        $project->category_id = $request->category_id;
         $project->fill($request->all());
         $project->save();
-        return redirect()->route('projects.show', $project->id)->with('success', 'Project has been created!');
+        return redirect()->action('DashboardController@project')->with('success', 'Project has been created');
     }
 
     /**
@@ -87,8 +100,9 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
+        $categories = Category::all();
         $project = Project::FindOrFail($id);
-        return view('projects.edit')->with('project', $project);
+        return view('projects.edit')->with('project', $project)->with('categories', $categories);
     }
 
     /**
@@ -103,6 +117,7 @@ class ProjectController extends Controller
         $this->validate($request, [
             'title'         => 'required',
             'description'   => 'required', 
+            'category_id'   => 'required',
             'body'          => 'required',
             'cover_image'   => 'image|nullable|max:1999'
         ]);
@@ -116,12 +131,13 @@ class ProjectController extends Controller
         }
 
         $project = Project::find($id);
+        $project->category_id = $request->category_id;
         $project->fill($request->all());
         if($request->hasFile('cover_image')){
             $project->cover_image = $filenameToStore;
         }
         $project->save();
-        return redirect()->route('projects.show', $id)->with('success', 'Project has been updated!');
+        return redirect()->action('DashboardController@project')->with('success', 'Project has been updated');
     }
 
     /**
@@ -142,6 +158,6 @@ class ProjectController extends Controller
         }
 
         $project->delete();
-        return redirect('dashboard')->with('success', 'Project has been deleted!');
+        return redirect()->action('DashboardController@project')->with('success', 'Project has been deleted');
     }
 }

@@ -43,6 +43,8 @@ class CareerController extends Controller
         $this->validate($request, [
             'title'         => 'required',
             'description'   => 'required',
+            'start_date'    => 'required',
+            'end_date'      => 'required',
             'body'          => 'required',
             'cover_image'   => 'image|nullable|max:1999'
         ]);
@@ -61,9 +63,12 @@ class CareerController extends Controller
         $career = new Career();
         $career->cover_image = $filenameToStore;
         $career->user_id = auth()->user()->id;
+        //Date needs to be formatted so the edit form fields can be pre-filled with these dates.
+        $career->start_date = date('Y-m-d', strtotime($career->start_date));
+        $career->end_date = date('Y-m-d', strtotime($career->end_date));
         $career->fill($request->all());
         $career->save();
-        return redirect()->route('careers.show', $career->id)->with('success', 'Career has been created!');
+        return redirect()->action('DashboardController@career')->with('success', 'Career has been created');
     }
 
     /**
@@ -74,8 +79,7 @@ class CareerController extends Controller
      */
     public function show($id)
     {
-        $career = Career::FindOrFail($id);
-        return view('careers.show')->with('career', $career);
+        //
     }
 
     /**
@@ -86,9 +90,8 @@ class CareerController extends Controller
      */
     public function edit($id)
     {
-        $categories = Category::all();
         $career = Career::FindOrFail($id);
-        return view('careers.edit')->with('career', $career)->with('categories', $categories);
+        return view('careers.edit')->with('career', $career);
     }
 
     /**
@@ -102,8 +105,9 @@ class CareerController extends Controller
     {
         $this->validate($request, [
             'title'         => 'required',
-            'description'   => 'required', 
-            'category_id'   => 'required|integer',
+            'description'   => 'required',
+            'start_date'    => 'required',
+            'end_date'      => 'required',
             'body'          => 'required',
             'cover_image'   => 'image|nullable|max:1999'
         ]);
@@ -117,13 +121,12 @@ class CareerController extends Controller
         }
 
         $career = Career::find($id);
-        $career->category_id = $request->category_id;
         $career->fill($request->all());
         if($request->hasFile('cover_image')){
             $career->cover_image = $filenameToStore;
         }
         $career->save();
-        return redirect()->route('careers.show', $id)->with('success', 'Career has been updated!');
+        return redirect()->action('DashboardController@career')->with('success', 'Career has been updated');
     }
 
     /**
@@ -144,6 +147,6 @@ class CareerController extends Controller
         }
 
         $career->delete();
-        return redirect('dashboard')->with('success', 'Career has been deleted!');
+        return redirect()->action('DashboardController@career')->with('success', 'Career has been deleted');
     }
 }

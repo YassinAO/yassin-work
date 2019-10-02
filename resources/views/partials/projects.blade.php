@@ -2,7 +2,7 @@
 <div class="container">
     <div class="title-block" data-aos="fade-up">
         <div class="section-title">
-            <h2>My Cases</h2>
+            <h2>Projects</h2>
         </div>
     </div>
 
@@ -23,10 +23,10 @@
                 </div>
             @endif
 
-            <div class="cases-block big-case" data-aos="fade-up">
+            <div class="cases-block" data-aos="fade-up">
                 <div class="cases-thumb">
                     <a href="/projects/{{$project->id}}"><figure><img src="/storage/cover_images/projects/{{$project->cover_image}}" alt="" width="100%"></figure></a>
-                    <a href="cases" class="view-btn nav-link"><span>View case</span></a>
+                    <a href="cases" class="view-btn nav-link"><span>View project</span></a>
                 </div>
                 <div class="cases-desc">
                     <h5>{{$project->title}}</h5>
