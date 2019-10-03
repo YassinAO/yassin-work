@@ -18,7 +18,7 @@
 
                     <div class="form-block">
                         <label for="name">Color</label>
-                        <input type="text" name="color" value="{{ old('color') }}" class="form-control">
+                        <input type="text" name="color" id="color_value" value="{{ old('color') }}" class="form-control jscolor">
                         <span class="error">{{ $errors->first('color') }}</span>
                     </div>
 
@@ -34,6 +34,7 @@
                     <thead>
                         <th>Title</th>
                         <th># Hexa</th>
+                        <th>Preview</th>
                         <th>Actions</th>
                     </thead>
                         
@@ -41,6 +42,7 @@
                         <tr>
                             <td>{{$tag->title}}</td>
                             <td>{{$tag->color}}</td>
+                            <td><div class="color-preview" style="background-color: #{{$tag->color}}; width: 100%; height: 30px;"></div></td>
                             <td>
                                 <a href="/tags/{{$tag->id}}/edit" class="btn-custom btn-edit"><i class="fas fa-edit"></i></a>
                                 <form method="POST" action="{{ route('tags.destroy', $tag->id)}}" style="display: inline-block;"> 

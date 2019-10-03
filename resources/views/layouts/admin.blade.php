@@ -31,6 +31,7 @@
     <div id="app">
         <main>
             @yield('content')
+            <script src="{{ asset('js/jscolor.js') }}"></script>
         </main>
     </div>
 </body>
