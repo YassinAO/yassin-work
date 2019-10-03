@@ -48,7 +48,7 @@
                     </div>
                     
                     <button type="submit" class="btn-custom btn-add"><i class="fas fa-check"></i></button>
-                    <a class="btn-custom btn-cancel" href="{{ route('dashboard') }}"><i class="fas fa-times"></i></a>
+                    <a class="btn-custom btn-cancel" href="{{ url('dashboard/posts') }}"><i class="fas fa-times"></i></a>
                     @csrf
                 </form>
             </div>

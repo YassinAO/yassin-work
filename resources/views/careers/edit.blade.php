@@ -48,7 +48,7 @@
                     </div>
                     
                     <button type="submit" class="btn-custom btn-edit"><i class="fas fa-edit"></i></button>
-                    <a class="btn btn-custom btn-cancel" href="{{ route('dashboard') }}"><i class="fas fa-times"></i></a>
+                    <a class="btn-custom btn-cancel" href="{{ url('dashboard/careers') }}"><i class="fas fa-times"></i></a>
                     @method('PUT')
                     @csrf
                 </form>
