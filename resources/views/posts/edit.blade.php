@@ -37,7 +37,20 @@
                             @endforeach
         
                         </select>
-                        <span class="error">{{ $errors->first('category') }}</span>
+                        <span class="error">{{ $errors->first('category_id') }}</span>
+                    </div>
+
+                    
+                    <div class="form-block">
+                        <label for="name">Tag</label>
+                        <select class="form-control select2-multi" name="tag_id[]" multiple="multiple">
+        
+                            @foreach($tags as $tag)
+                                <option value="{{ $tag->id }}">{{ $tag->title }}</option>
+                            @endforeach
+        
+                        </select>
+                        <span class="error">{{ $errors->first('tag_id') }}</span>
                     </div>
         
                     <div class="form-block">
@@ -60,5 +73,8 @@
         </div>
     </div>
 </div>
-
+<script type="text/javascript">
+    $('.select2-multi').select2();
+    $('.select2-multi').select2().val({!! json_encode($post->tags()->allRelatedIds()) !!}).trigger('change');
+</script>
 @endsection
