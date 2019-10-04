@@ -9,6 +9,7 @@ use App\Project;
 use App\Career;
 use App\Category;
 use App\Tag;
+use App\Service;
 
 class DashboardController extends Controller
 {
@@ -44,6 +45,13 @@ class DashboardController extends Controller
         $user = User::find($user_id);
         $projects = Project::orderBy('id', 'desc')->paginate(5);
         return view('dashboard.projects')->with('projects', $user->projects)->with('projects', $projects);
+    }
+
+    public function service(){
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+        $services = Service::orderBy('id', 'desc')->paginate(5);
+        return view('dashboard.services')->with('services', $user->services)->with('services', $services);
     }
 
     public function career(){

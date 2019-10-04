@@ -14,6 +14,9 @@
                 <a class="sidenav-link" href="{{ url('dashboard/projects') }}"><i class="fas fa-pencil-ruler"></i> Projects</a>
             </li>
             <li class="sidenav-item">
+                <a class="sidenav-link" href="{{ url('dashboard/services') }}"><i class="fas fa-concierge-bell"></i> Services</a>
+            </li>
+            <li class="sidenav-item">
                 <a class="sidenav-link" href="{{ url('dashboard/careers') }}"><i class="fas fa-building"></i> Careers</a>
             </li>
             <li class="sidenav-item">

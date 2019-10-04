@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Project;
-use App\Career;
 use App\Service;
 
-class HomeController extends Controller
+class ServiceController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,10 +19,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
-        $services = Service::all();
-        $careers = Career::all();
-        return view('home',compact(['projects', 'services', 'careers']));
+        //
     }
 
     /**
@@ -29,7 +29,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        //
+        return view('services.create');
     }
 
     /**
@@ -40,7 +40,17 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title'         => 'required',
+            'description'   => 'required',
+        ]);
+
+        
+        $service = new Service();
+        $service->user_id = auth()->user()->id;
+        $service->fill($request->all());
+        $service->save();
+        return redirect()->action('DashboardController@service')->with('success', 'service has been created');
     }
 
     /**
@@ -62,7 +72,8 @@ class HomeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $service = Service::FindOrFail($id);
+        return view('services.edit')->with('service', $service);
     }
 
     /**
@@ -74,7 +85,15 @@ class HomeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title'         => 'required',
+            'description'   => 'required',
+        ]);
+
+        $service = service::find($id);
+        $service->fill($request->all());
+        $service->save();
+        return redirect()->action('DashboardController@service')->with('success', 'service has been updated');
     }
 
     /**
@@ -85,6 +104,13 @@ class HomeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $service = service::find($id);
+
+        if(auth()->user()->id !==$service->user_id){
+            return redirect('/services');
+        }
+
+        $service->delete();
+        return redirect()->action('DashboardController@service')->with('success', 'service has been deleted');
     }
 }
