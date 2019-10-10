@@ -35,6 +35,7 @@
         <main>
             @yield('content')
             <script src="{{ asset('js/jscolor.js') }}"></script>
+            <script src="{{ asset('js/preview.js') }}"></script>
         </main>
     </div>
 </body>

@@ -937,6 +937,16 @@ footer {
           // background: #F9F9F9; 
           border:1px solid #ccc;
       }
+      .select2-container--default .select2-selection--multiple{
+        border-radius: 0px;
+        margin-top: 10px;
+        color: #8a8282;
+        border:1px solid #ccc;
+      }
+      #cover-preview{
+        display: block;
+        margin-top: 10px;
+      }
   }
 }
 

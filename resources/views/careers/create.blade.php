@@ -43,7 +43,8 @@
                     </div>
         
                     <div class="form-block">
-                        <input type="file" name="cover_image" id="cover_image">
+                        <input type="file" name="cover_image" id="cover_image" onchange="readURL(this)">
+                        <img id="cover-preview" src="#" alt="" width="25%">
                         <span class="error">{{ $errors->first('cover_image') }}</span>
                     </div>
                     

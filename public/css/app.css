@@ -1062,6 +1062,18 @@ footer .mark {
   border: 1px solid #ccc;
 }
 
+.form-container .form-block .select2-container--default .select2-selection--multiple {
+  border-radius: 0px;
+  margin-top: 10px;
+  color: #8a8282;
+  border: 1px solid #ccc;
+}
+
+.form-container .form-block #cover-preview {
+  display: block;
+  margin-top: 10px;
+}
+
 .error {
   display: block;
   margin-top: 5px;

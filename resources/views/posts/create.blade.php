@@ -14,13 +14,13 @@
                 <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                     <div class="form-block">
                         <label for="name">Title</label>
-                        <input type="text" name="title" value="{{ old('title') }}" class="form-control">
+                        <input type="text" name="title" value="{{ old('title') }}" autocomplete="off" class="form-control">
                         <span class="error">{{ $errors->first('title') }}</span>
                     </div>
         
                     <div class="form-block">
                         <label for="name">Description</label>
-                        <input type="text" name="description" value="{{ old('description') }}" class="form-control">
+                        <input type="text" name="description" value="{{ old('description') }}" autocomplete="off" class="form-control">
                         <span class="error">{{ $errors->first('description') }}</span>
                     </div>
 
@@ -50,12 +50,13 @@
         
                     <div class="form-block">
                         <label for="name">Body</label>
-                        <textarea name="body" id="textarea" rows="15" class="form-control">{{ old('body') }}</textarea>
+                        <textarea name="body" id="textarea" rows="15" autocomplete="off" class="form-control">{{ old('body') }}</textarea>
                         <span class="error">{{ $errors->first('body') }}</span>
                     </div>
         
                     <div class="form-block">
-                        <input type="file" name="cover_image" id="cover_image">
+                        <input type="file" name="cover_image" id="cover_image" onchange="readURL(this)">
+                        <img id="cover-preview" src="#" alt="" width="25%">
                         <span class="error">{{ $errors->first('cover_image') }}</span>
                     </div>
                     
