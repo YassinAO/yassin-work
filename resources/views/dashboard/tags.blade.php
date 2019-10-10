@@ -12,7 +12,7 @@
 
                     <div class="form-block">
                         <label for="name">Title</label>
-                        <input type="text" name="title" value="{{ old('title') }}" class="form-control">
+                        <input type="text" name="title" value="{{ old('title') }}" autocomplete="off" class="form-control">
                         <span class="error">{{ $errors->first('title') }}</span>
                     </div>
 
@@ -58,12 +58,12 @@
                     <p>No tags found.</p>
                 @endif
         </div>
-        {{-- <div class="dashboard-block">
+        <div class="dashboard-block">
             <div class="pagination">
                 {!! $tags->links('partials.pagination'); !!}
                 <small class="page">page {{$tags->currentPage()}} of {{$tags->lastPage()}}</small>
             </div>
-        </div> --}}
+        </div>
     </div>
 </div>
 @endsection

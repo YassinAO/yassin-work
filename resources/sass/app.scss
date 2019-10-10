@@ -909,6 +909,7 @@ footer {
         font-size: 1.1em;
         font-weight: 100;
         transition: color 0.5s;
+        margin-left: 15px;
         &:hover {
           color: $darkblue;
         }
@@ -916,6 +917,9 @@ footer {
       i{
         margin-right: 10px;
       }
+    }
+    h3{
+      color: $darkblue;
     }
   }
 }

@@ -1031,6 +1031,7 @@ footer .mark {
   font-size: 1.1em;
   font-weight: 100;
   transition: color 0.5s;
+  margin-left: 15px;
 }
 
 #sidenav ul li a:hover {
@@ -1039,6 +1040,10 @@ footer .mark {
 
 #sidenav ul li i {
   margin-right: 10px;
+}
+
+#sidenav ul h3 {
+  color: #064475;
 }
 
 .form-container {
