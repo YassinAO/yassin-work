@@ -41,7 +41,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title'         => 'required',
+            'title' => 'required',
         ]); 
 
         $category = new Category;
@@ -69,7 +69,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::FindOrFail($id);
+        return view('categories.edit')->with('category', $category);
     }
 
     /**
@@ -81,7 +82,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+        ]);
+
+        $category = Category::FindOrFail($id);
+        $category->fill($request->all());
+        $category->save();
+
+        return redirect()->action('DashboardController@category')->with('success', 'Category has been updated');
     }
 
     /**

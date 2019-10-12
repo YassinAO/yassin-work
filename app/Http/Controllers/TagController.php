@@ -41,8 +41,8 @@ class TagController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title'         => 'required',
-            'color'         => 'required',
+            'title' => 'required',
+            'color' => 'required',
         ]); 
 
         $tag = new Tag;
@@ -70,7 +70,8 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tag = Tag::FindOrFail($id);
+        return view('tags.edit')->with('tag', $tag);
     }
 
     /**
@@ -82,7 +83,16 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'color' => 'required',
+        ]);
+
+        $tag = Tag::FindOrFail($id);
+        $tag->fill($request->all());
+        $tag->save();
+
+        return redirect()->action('DashboardController@tag')->with('success', 'Tag has been updated');
     }
 
     /**

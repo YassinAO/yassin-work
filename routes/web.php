@@ -27,5 +27,5 @@ Route::resource('posts', 'PostController');
 Route::resource('projects', 'ProjectController', ['except' => ['index']]);
 Route::resource('services', 'ServiceController', ['except' => ['index', 'show']]);
 Route::resource('careers', 'CareerController', ['except' => ['index', 'show']]);
-Route::resource('categories', 'CategoryController', ['except' => ['index', 'create', 'show', 'edit']]);
-Route::resource('tags', 'TagController', ['except' => ['index', 'create', 'show', 'edit']]);
+Route::resource('categories', 'CategoryController', ['except' => ['index', 'create']]);
+Route::resource('tags', 'TagController', ['except' => ['index', 'create']]);
