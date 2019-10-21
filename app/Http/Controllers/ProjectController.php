@@ -57,6 +57,7 @@ class ProjectController extends Controller
             'description'   => 'required',
             'category_id'   => 'required',
             'body'          => 'required',
+            'repository'    => 'required',
             'cover_image'   => 'image|nullable|max:1999'
         ]);
 
@@ -119,6 +120,7 @@ class ProjectController extends Controller
             'description'   => 'required', 
             'category_id'   => 'required',
             'body'          => 'required',
+            'repository'    => 'required',
             'cover_image'   => 'image|nullable|max:1999'
         ]);
 

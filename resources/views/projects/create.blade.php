@@ -35,6 +35,12 @@
                         </select>
                         <span class="error">{{ $errors->first('category') }}</span>
                     </div>
+
+                    <div class="form-block">
+                        <label for="name">Repository url</label>
+                        <input type="text" name="repository" value="{{ old('repository') }}" autocomplete="off" class="form-control">
+                        <span class="error">{{ $errors->first('repository') }}</span>
+                    </div>
         
                     <div class="form-block">
                         <label for="name">Body</label>
