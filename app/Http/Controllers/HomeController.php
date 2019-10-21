@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Project;
 use App\Career;
+use App\Service;
 
 class HomeController extends Controller
 {
@@ -16,8 +17,9 @@ class HomeController extends Controller
     public function index()
     {
         $projects = Project::all();
-        $careers = Career::all();
-        return view('home',compact(['projects','careers']));
+        $services = Service::all();
+        $careers  = Career::orderBy('id', 'desc')->get();
+        return view('home',compact(['projects', 'services', 'careers']));
     }
 
     /**

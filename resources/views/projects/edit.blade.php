@@ -29,11 +29,21 @@
                         <select class="form-control" name="category_id">
         
                             @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                @if($category->id == $project->category_id)
+                                    <option value="{{ $category->id }}" selected="selected">{{ $category->title }}</option>
+                                @else
+                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                @endif
                             @endforeach
         
                         </select>
                         <span class="error">{{ $errors->first('category') }}</span>
+                    </div>
+
+                    <div class="form-block">
+                        <label for="name">Repository url</label>
+                        <input type="text" name="repository" value="{{ $project->repository }}" autocomplete="off" class="form-control">
+                        <span class="error">{{ $errors->first('repository') }}</span>
                     </div>
         
                     <div class="form-block">
@@ -43,12 +53,13 @@
                     </div>
         
                     <div class="form-block">
-                        <input type="file" name="cover_image" id="cover_image">
+                        <input type="file" name="cover_image" id="cover_image" onchange="readURL(this)">
+                        <img id="cover-preview" src="/storage/cover_images/projects/{{$project->cover_image}}" alt="" width="25%">
                         <span class="error">{{ $errors->first('cover_image') }}</span>
                     </div>
                     
                     <button type="submit" class="btn-custom btn-edit"><i class="fas fa-edit"></i></button>
-                    <a class="btn btn-custom btn-cancel" href="{{ route('dashboard') }}"><i class="fas fa-times"></i></a>
+                    <a class="btn-custom btn-cancel" href="{{ url('dashboard/projects') }}"><i class="fas fa-times"></i></a>
                     @method('PUT')
                     @csrf
                 </form>

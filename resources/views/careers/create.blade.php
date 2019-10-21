@@ -43,12 +43,13 @@
                     </div>
         
                     <div class="form-block">
-                        <input type="file" name="cover_image" id="cover_image">
+                        <input type="file" name="cover_image" id="cover_image" onchange="readURL(this)">
+                        <img id="cover-preview" src="#" alt="" width="25%">
                         <span class="error">{{ $errors->first('cover_image') }}</span>
                     </div>
                     
                     <button type="submit" class="btn-custom btn-add"><i class="fas fa-check"></i></button>
-                    <a class="btn-custom btn-cancel" href="{{ route('dashboard') }}"><i class="fas fa-times"></i></a>
+                    <a class="btn-custom btn-cancel" href="{{ url('dashboard/careers') }}"><i class="fas fa-times"></i></a>
                     @csrf
                 </form>
             </div>

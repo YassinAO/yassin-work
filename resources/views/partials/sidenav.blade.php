@@ -4,26 +4,34 @@
         </div>
     <div id="sidenav-container">
         <ul>
-            <li class="sidenav-item">
-                <a class="sidenav-link" href="{{ url('/') }}" target="_blank"><i class="fas fa-satellite-dish"></i> Live</a>
-            </li>
-            <li class="sidenav-item">
-                <a class="sidenav-link" href="{{ url('dashboard') }}"><i class="fas fa-home"></i> Main</a>
-            </li>
+            <h3>Portfolio</h3>
             <li class="sidenav-item">
                 <a class="sidenav-link" href="{{ url('dashboard/projects') }}"><i class="fas fa-pencil-ruler"></i> Projects</a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="{{ url('dashboard/careers') }}"><i class="fas fa-building"></i> Careers</a>
+                <a class="sidenav-link" href="{{ url('dashboard/services') }}"><i class="fas fa-concierge-bell"></i> Services</a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="{{ url('dashboard/posts') }}"><i class="fas fa-blog"></i> Blog</a>
+                <a class="sidenav-link" href="{{ url('dashboard/careers') }}"><i class="fas fa-building"></i> Careers</a>
+            </li>
+
+            <h3>Blog</h3>
+            <li class="sidenav-item">
+                <a class="sidenav-link" href="{{ url('dashboard/posts') }}"><i class="fas fa-comments"></i> Posts</a>
             </li>
             <li class="sidenav-item">
                 <a class="sidenav-link" href="{{ url('dashboard/categories') }}"><i class="fas fa-layer-group"></i> Categories</a>
             </li>
             <li class="sidenav-item">
                 <a class="sidenav-link" href="{{ url('dashboard/tags') }}"><i class="fas fa-tags"></i> Tags</a>
+            </li>
+
+            <h3>Other</h3>
+            <li class="sidenav-item">
+                <a class="sidenav-link" href="{{ url('/') }}" target="_blank"><i class="fas fa-satellite-dish"></i> Live</a>
+            </li>
+            <li class="sidenav-item">
+                <a class="sidenav-link" href="{{ url('dashboard') }}"><i class="fas fa-home"></i> Dashboard</a>
             </li>
             <li class="sidenav-item">
                 <a class="sidenav-link" href="{{ route('logout') }}"

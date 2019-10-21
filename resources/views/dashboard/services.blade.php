@@ -4,29 +4,28 @@
 <div class="container">
     <div class="dashboard-container">
         <div class="dashboard-block">
-            <h2>Posts overview</h2>
-            <a href="/posts/create" class="btn-custom btn-create"><i class="fas fa-plus"></i></a>
+            <h2>services overview</h2>
+            <a href="/services/create" class="btn-custom btn-create"><i class="fas fa-plus"></i></a>
         </div>
         <div class="dashboard-block">
-                @if(count($posts) > 0 )
+                @if(count($services) > 0 )
                 <table>
                     
                     <thead>
                         <th>Title</th>
-                        <th>Category</th>
-                        <th>Last modified</th>
+                        <th>Description</th>
+                        <th>Icon</th>
                         <th>Actions</th>
                     </thead>
                         
-                    @foreach($posts as $post)
+                    @foreach($services as $service)
                         <tr>
-                            <td>{{$post->title}}</td>
-                            <td>{{$post->category->title}}</td>
-                            <td>{{$post->updated_at->format('d-m-Y')}}</td>
+                            <td>{{$service->title}}</td>
+                            <td>{{$service->description}}</td>
+                            <td><i class="{{$service->icon}} fa-2x"></i></td>
                             <td>
-                                <a href="/posts/{{$post->id}}" class="btn-custom btn-view"><i class="fas fa-eye"></i></a>
-                                <a href="/posts/{{$post->id}}/edit" class="btn-custom btn-edit"><i class="fas fa-edit"></i></a>
-                                <form method="POST" action="{{ route('posts.destroy', $post->id)}}" style="display: inline-block;"> 
+                                <a href="/services/{{$service->id}}/edit" class="btn-custom btn-edit"><i class="fas fa-edit"></i></a>
+                                <form method="POST" action="{{ route('services.destroy', $service->id)}}" style="display: inline-block;"> 
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn-custom btn-delete" onclick="return confirm('Are you sure?')" style="padding: 0px;"><i class="fas fa-trash-alt"></i></button>
@@ -36,13 +35,13 @@
                     @endforeach
                 </table>
                 @else 
-                    <p>No posts found.</p>
+                    <p>No services found.</p>
                 @endif
         </div>
         <div class="dashboard-block">
             <div class="pagination-container">
-                {!! $posts->links('partials.pagination'); !!}
-                <small class="page">page {{$posts->currentPage()}} of {{$posts->lastPage()}}</small>
+                {!! $services->links('partials.pagination'); !!}
+                <small class="page">page {{$services->currentPage()}} of {{$services->lastPage()}}</small>
             </div>
         </div>
     </div>

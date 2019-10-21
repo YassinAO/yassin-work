@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\Category;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -41,7 +42,8 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('posts.create')->with('categories', $categories);
+        $tags = Tag::all();
+        return view('posts.create')->with('categories', $categories)->with('tags', $tags);
     }
 
     /**
@@ -56,6 +58,7 @@ class PostController extends Controller
             'title'         => 'required',
             'description'   => 'required',
             'category_id'   => 'required|integer',
+            'tag_id'        => 'required',
             'body'          => 'required',
             'cover_image'   => 'image|nullable|max:1999'
         ]);
@@ -77,6 +80,9 @@ class PostController extends Controller
         $post->category_id = $request->category_id;
         $post->fill($request->all());
         $post->save();
+
+        // Set to false to not overwrite tags values.
+        $post->tags()->sync($request->tag_id, false);
         return redirect()->action('DashboardController@post')->with('success', 'Post has been created');
     }
 
@@ -101,8 +107,9 @@ class PostController extends Controller
     public function edit($id)
     {
         $categories = Category::all();
+        $tags = Tag::all();
         $post = Post::FindOrFail($id);
-        return view('posts.edit')->with('post', $post)->with('categories', $categories);
+        return view('posts.edit')->with('post', $post)->with('categories', $categories)->with('tags', $tags);
     }
 
     /**
@@ -118,6 +125,7 @@ class PostController extends Controller
             'title'         => 'required',
             'description'   => 'required', 
             'category_id'   => 'required|integer',
+            'tag_id'        => 'required',
             'body'          => 'required',
             'cover_image'   => 'image|nullable|max:1999'
         ]);
@@ -137,6 +145,7 @@ class PostController extends Controller
             $post->cover_image = $filenameToStore;
         }
         $post->save();
+        $post->tags()->sync($request->tag_id);
         return redirect()->action('DashboardController@post')->with('success', 'Post has been updated');
     }
 

@@ -11,7 +11,7 @@
                 <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
                     <div class="form-block">
                         <label for="name">Title</label>
-                        <input type="text" name="title" value="{{ old('title') }}" class="form-control">
+                        <input type="text" name="title" value="{{ old('title') }}" autocomplete="off" class="form-control">
                         <span class="error">{{ $errors->first('title') }}</span>
                     </div>
 
@@ -47,12 +47,12 @@
                     <p>No categories found.</p>
                 @endif
         </div>
-        {{-- <div class="dashboard-block">
-            <div class="pagination">
+        <div class="dashboard-block">
+            <div class="pagination-container">
                 {!! $categories->links('partials.pagination'); !!}
                 <small class="page">page {{$categories->currentPage()}} of {{$categories->lastPage()}}</small>
             </div>
-        </div> --}}
+        </div>
     </div>
 </div>
 @endsection

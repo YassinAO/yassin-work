@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Category;
+use App\Service;
 
-class CategoryController extends Controller
+class ServiceController extends Controller
 {
 
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['index', 'show']);
     }
 
     /**
@@ -29,7 +29,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('services.create');
     }
 
     /**
@@ -41,13 +41,17 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
-        ]); 
+            'title'         => 'required',
+            'description'   => 'required',
+            'icon'          => 'required',
+        ]);
 
-        $category = new Category;
-        $category->fill($request->all());
-        $category->save();
-        return redirect()->action('DashboardController@category')->with('success', 'Category has been created');
+        
+        $service = new Service();
+        $service->user_id = auth()->user()->id;
+        $service->fill($request->all());
+        $service->save();
+        return redirect()->action('DashboardController@service')->with('success', 'service has been created');
     }
 
     /**
@@ -69,8 +73,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::FindOrFail($id);
-        return view('categories.edit')->with('category', $category);
+        $service = Service::FindOrFail($id);
+        return view('services.edit')->with('service', $service);
     }
 
     /**
@@ -83,14 +87,15 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'title' => 'required',
+            'title'         => 'required',
+            'description'   => 'required',
+            'icon'          => 'required',
         ]);
 
-        $category = Category::FindOrFail($id);
-        $category->fill($request->all());
-        $category->save();
-
-        return redirect()->action('DashboardController@category')->with('success', 'Category has been updated');
+        $service = service::find($id);
+        $service->fill($request->all());
+        $service->save();
+        return redirect()->action('DashboardController@service')->with('success', 'service has been updated');
     }
 
     /**
@@ -101,8 +106,13 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
-        $category->delete();
-        return redirect()->action('DashboardController@category')->with('success', 'Category has been deleted');
+        $service = service::find($id);
+
+        if(auth()->user()->id !==$service->user_id){
+            return redirect('/services');
+        }
+
+        $service->delete();
+        return redirect()->action('DashboardController@service')->with('success', 'service has been deleted');
     }
 }

@@ -164,14 +164,14 @@ header {
 }
 
 .name {
-  font-size: 2em;
+  font-size: 2.2em;
   font-weight: 900;
   color: #ffff;
   font-family: "Open Sans", sans-serif;
 }
 
 .occupation {
-  font-size: 1.3em;
+  font-size: 0.8em;
   font-weight: 600;
   color: #ffff;
   font-family: "Open Sans", sans-serif;
@@ -179,7 +179,7 @@ header {
 
 .quote {
   color: #2C83D1;
-  font-size: 1em;
+  font-size: 0.8em;
   font-weight: 600;
   font-family: "Open Sans", sans-serif;
 }
@@ -733,6 +733,12 @@ footer .mark {
   padding: 20px;
 }
 
+.timeline ul li .content img {
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .timeline ul li h3,
 .timeline ul li h5 {
   margin: 0px;
@@ -969,8 +975,7 @@ footer .mark {
   width: 100%;
   table-layout: fixed;
   text-align: left;
-  margin-top: 25px;
-  margin-bottom: 50px;
+  margin: 25px 0px 25px 0px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.16);
 }
 
@@ -1031,6 +1036,7 @@ footer .mark {
   font-size: 1.1em;
   font-weight: 100;
   transition: color 0.5s;
+  margin-left: 15px;
 }
 
 #sidenav ul li a:hover {
@@ -1039,6 +1045,10 @@ footer .mark {
 
 #sidenav ul li i {
   margin-right: 10px;
+}
+
+#sidenav ul h3 {
+  color: #064475;
 }
 
 .form-container {
@@ -1060,6 +1070,18 @@ footer .mark {
   margin-top: 10px;
   color: #8a8282;
   border: 1px solid #ccc;
+}
+
+.form-container .form-block .select2-container--default .select2-selection--multiple {
+  border-radius: 0px;
+  margin-top: 10px;
+  color: #8a8282;
+  border: 1px solid #ccc;
+}
+
+.form-container .form-block #cover-preview {
+  display: block;
+  margin-top: 10px;
 }
 
 .error {
@@ -1085,9 +1107,34 @@ footer .mark {
   background-color: #b41e35;
 }
 
-.pagination {
+.pagination-container {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+}
+
+.pagination-container ul {
+  margin: 0px 0px 20px 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+
+.pagination-container ul li {
+  display: inline-flex;
+  background-color: #ffff;
+}
+
+.pagination-container ul li a {
+  color: #0B0B0B;
+  padding: 15px 20px 15px 20px;
+}
+
+.pagination-container ul .active {
+  background-color: #064475;
+}
+
+.pagination-container ul .active a {
+  text-align: center;
+  color: #ffff;
 }
 
 .btn-custom {

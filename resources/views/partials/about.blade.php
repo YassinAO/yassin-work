@@ -16,15 +16,12 @@
             </div>
         </div>
         <div class="about-block">
-            <p>Hello there! My name is Yassin and I'm currently an IT & Media Design student at 
-                Fontys University of Applied Science located in The Netherlands.</p>
-            
-            <p>I love to develop/design websites, code in Python and learn more about the Korean language & culture. 
-                It all started as a hobby but it is now something im very passionate and proud of.</p>
+            <p>Hello there! My name is Yassin, I enjoy developing & designing websites, write scripts in Python and learn more about the Korean language & culture. 
+                It all started as a hobby of mine but it's now something im very passionate and proud of.</p>
 
             <p>This portfolio is developed and designed from scratch with the skills I learned over the years.</p>
 
-            <p>Now it's time to put my skills and abilities to good use!</p>
+            <p>I would love to put my skills and abilities to further good use!</p>
         </div>
         
         <div class="quote-block whitespace">

@@ -15,15 +15,17 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::get('/dashboard/posts', 'DashboardController@post')->name('posts');
-Route::get('/dashboard/projects', 'DashboardController@project')->name('projects');;
-Route::get('/dashboard/careers', 'DashboardController@career')->name('careers');;
-Route::get('/dashboard/categories', 'DashboardController@category')->name('categories');;
-Route::get('/dashboard/tags', 'DashboardController@tag')->name('tags');;
+Route::get('/dashboard/projects', 'DashboardController@project')->name('projects');
+Route::get('/dashboard/services', 'DashboardController@service')->name('services');
+Route::get('/dashboard/careers', 'DashboardController@career')->name('careers');
+Route::get('/dashboard/categories', 'DashboardController@category')->name('categories');
+Route::get('/dashboard/tags', 'DashboardController@tag')->name('tags');
 
 Auth::routes([ 'register' => false ]);
 
 Route::resource('posts', 'PostController');
 Route::resource('projects', 'ProjectController', ['except' => ['index']]);
+Route::resource('services', 'ServiceController', ['except' => ['index', 'show']]);
 Route::resource('careers', 'CareerController', ['except' => ['index', 'show']]);
-Route::resource('categories', 'CategoryController', ['except' => ['index', 'create', 'show', 'edit']]);
-Route::resource('tags', 'TagController', ['except' => ['index', 'create', 'show', 'edit']]);
+Route::resource('categories', 'CategoryController', ['except' => ['index', 'create']]);
+Route::resource('tags', 'TagController', ['except' => ['index', 'create']]);
