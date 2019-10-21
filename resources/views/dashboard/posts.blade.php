@@ -40,7 +40,7 @@
                 @endif
         </div>
         <div class="dashboard-block">
-            <div class="pagination">
+            <div class="pagination-container">
                 {!! $posts->links('partials.pagination'); !!}
                 <small class="page">page {{$posts->currentPage()}} of {{$posts->lastPage()}}</small>
             </div>
