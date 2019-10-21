@@ -71,4 +71,6 @@
 <script type="text/javascript">
     $('.select2-multi').select2();
 </script>
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script src="{{ asset('js/tinymce.js') }}"></script>
 @endsection

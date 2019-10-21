@@ -78,4 +78,6 @@
     $('.select2-multi').select2();
     $('.select2-multi').select2().val({!! json_encode($post->tags()->allRelatedIds()) !!}).trigger('change');
 </script>
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script src="{{ asset('js/tinymce.js') }}"></script>
 @endsection
