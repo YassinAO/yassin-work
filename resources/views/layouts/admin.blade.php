@@ -10,9 +10,6 @@
     <title>{{ config('app.name', 'Yassin') }}</title>
 
     <!-- Scripts -->
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-    <script src="{{ asset('js/editor.js') }}"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
     <script src="{{ asset('js/select2.min.js') }}"></script>
     

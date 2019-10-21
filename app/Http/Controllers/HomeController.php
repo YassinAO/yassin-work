@@ -18,7 +18,7 @@ class HomeController extends Controller
     {
         $projects = Project::all();
         $services = Service::all();
-        $careers = Career::all();
+        $careers  = Career::orderBy('id', 'desc')->get();
         return view('home',compact(['projects', 'services', 'careers']));
     }
 
