@@ -10,5 +10,5 @@ class Service extends Model
         return $this->belongsTo('App\User');
     }
 
-    protected $fillable = ['title', 'description'];
+    protected $fillable = ['title', 'description', 'icon'];
 }

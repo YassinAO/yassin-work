@@ -43,6 +43,7 @@ class ServiceController extends Controller
         $this->validate($request, [
             'title'         => 'required',
             'description'   => 'required',
+            'icon'          => 'required',
         ]);
 
         
@@ -88,6 +89,7 @@ class ServiceController extends Controller
         $this->validate($request, [
             'title'         => 'required',
             'description'   => 'required',
+            'icon'          => 'required',
         ]);
 
         $service = service::find($id);

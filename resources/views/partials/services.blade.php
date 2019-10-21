@@ -10,7 +10,7 @@
 
         @foreach($services->take(4) as $service)
         <div class="services-block" data-aos="fade-up">
-            <div class="icon"><i class="fas fa-cogs"></i></div>
+            <div class="icon"><i class="{{$service->icon}}"></i></div>
             <div class="content">
                 <h3>{{$service->title}}</h3>
                 <p>{{$service->description}}</p>
