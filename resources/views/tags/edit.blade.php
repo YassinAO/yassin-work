@@ -17,7 +17,7 @@
 
                     <div class="form-block">
                         <label for="name">Color</label>
-                        <input type="text" name="color" id="color_value" value="{{ $tag->color }}" class="form-control jscolor">
+                        <input type="text" name="color" id="color_value" value="{{ $tag->color }}" class="form-control jscolor {width:300, height:150}">
                         <span class="error">{{ $errors->first('color') }}</span>
                     </div>
     
