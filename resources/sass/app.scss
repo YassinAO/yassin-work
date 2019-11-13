@@ -962,8 +962,66 @@ footer {
 
 /* DASHBOARD END */
 
+/* LOGIN START*/
+
+.login-container {
+  width: 30%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  .login-block {
+    flex-basis: 100%;
+    box-sizing: border-box;
+    margin: auto;
+    .login-field{
+      margin-bottom: 25px;
+    }
+    h2{
+      color: white;
+      margin: 0px;
+      font-weight: 100;
+      font-size: 1.7em;
+      padding: 25px 0px 25px 0px;
+    }
+    h3{
+    display: block;
+    margin-top: 25px;
+    font-weight: 300;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    height: 100%;
+    text-align: center;
+    }
+    .mark{
+      color: $darkblue;
+      font-weight: 900;
+    }
+    form{
+      padding: 25px;
+      background-color: white;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.16);
+      input{
+        margin-top: 10px;
+        padding: 10px;
+        width: 100%;
+        box-sizing:border-box;
+        color: #8a8282;
+        border: 1px solid #ccc;
+      }
+      .btn-login{
+        background-color: $darkblue;
+        color: white;
+      }
+    }
+  }
+}
+
+/* LOGIN END*/
+
 
 /* BLOG START -cleanup css...-*/
+
 .post-container {
   width: $pageWidth;
   margin: auto;
@@ -1037,6 +1095,7 @@ footer {
 /* BLOG END */
 
 /* RESPONSIVE START */
+
 @media screen and (max-width: 1440px) {
   .navbar-container, .cases-container, .about-container, .services-container, .timeline-container, .contact-container, .footer-container {
     width: 80%;
